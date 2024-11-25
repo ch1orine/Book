@@ -26,11 +26,14 @@ public class ButtonExtension : MonoBehaviour, IPointerClickHandler, IPointerDown
     private float clickIntervalTime = 0;
     private int clickTimes = 0;
 
+    private GameObject green;
+
     [HideInInspector]
     public SpriteRenderer sp;
     // Update is called once per frame
     private void Awake()
     {
+        green = GameObject.Find("Green");
         if (changeImage)
         {
             sp = GetComponent<SpriteRenderer>();
@@ -87,6 +90,30 @@ public class ButtonExtension : MonoBehaviour, IPointerClickHandler, IPointerDown
         }
         GameObject ob = eventData.pointerCurrentRaycast.gameObject;
         Debug.Log(ob.name);
+        if (ob)
+        {
+            if (ob.GetComponent<Icon>())
+            {
+                 if (ob.GetComponent<Icon>().text)
+                {
+                    ob.GetComponent<Icon>().text.SetActive(true);                    
+                    if (green)
+                    {
+                        green.SetActive(false);
+                    }
+                }
+            }
+            if (ob.CompareTag("Paper"))
+            {
+                ob.SetActive(false);
+                GameObject.Find("Player").SendMessage("SetSign", false);
+                GameObject.Find("Progress").SendMessage("ChangeImage");
+                if (green)
+                {
+                    green.SetActive(true);
+                }
+            }
+        }
     }
 
     public void OnPointerUp(PointerEventData eventData) //Ì§Æð
