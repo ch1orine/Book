@@ -8,6 +8,8 @@ public class ShowSelf : MonoBehaviour
 
     public Vector2 pos;
 
+    public Vector2 pos1;
+
     private bool reach;
     // Start is called before the first frame update
     void Start()
@@ -18,11 +20,14 @@ public class ShowSelf : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!reach && mouse.transform.position.x > pos.x && mouse.transform.position.y < pos.y)
+        if (!reach && mouse.transform.position.x > pos.x && mouse.transform.position.y < pos.y && mouse.transform.position.x < pos1.x)
         {
             Debug.Log("P");
             gameObject.GetComponent<SpriteMask>().enabled = true;
             GameObject.Find("Progress").SendMessage("ChangeImage");
+            mouse.transform.GetChild(0).localPosition = new Vector3(-2.5f, 0.0f, 0.0f);
+            mouse.transform.GetChild(0).localScale = new Vector3(6.0f, 1.0f, 1.0f);
+            mouse.transform.GetChild(0).gameObject.SetActive(false);
             reach = true;
         }
     }

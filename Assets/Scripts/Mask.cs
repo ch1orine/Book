@@ -8,6 +8,7 @@ public class Mask : MonoBehaviour
 
     public float x = 4.5f;
 
+    public float y = -3.0f;
     private bool reach;
     // Start is called before the first frame update
     void Start()
@@ -19,14 +20,14 @@ public class Mask : MonoBehaviour
     void Update()
     {
         
-        transform.position = new Vector2(transform.position.x, -3.0f);
+        transform.position = new Vector2(transform.position.x, y);
         if (!reach && transform.position.x > x)
         {
             GetComponent<BoxCollider2D>().enabled = false;
             GameObject.Find("Progress").SendMessage("ChangeImage");
             reach = true;
             transform.SetParent(GameObject.Find("Progress").transform);
-            gameObject.SetActive(false);
+            
             if (btn)
             {
                 btn.SetActive(true);

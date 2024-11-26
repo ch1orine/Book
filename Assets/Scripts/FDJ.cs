@@ -9,6 +9,9 @@ public class FDJ : MonoBehaviour
     void Start()
     {
         Cursor.visible = false;
+        transform.position = new(-4.0f, 8.0f);
+
+
     }
 
     // Update is called once per frame
@@ -16,4 +19,6 @@ public class FDJ : MonoBehaviour
     {        
         transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0.0f); 
     }
+
+    
 }

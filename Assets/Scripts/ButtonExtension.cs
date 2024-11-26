@@ -99,7 +99,7 @@ public class ButtonExtension : MonoBehaviour, IPointerClickHandler, IPointerDown
                     ob.GetComponent<Icon>().text.SetActive(true);                    
                     if (green)
                     {
-                        green.SetActive(false);
+                        green.GetComponent<BoxCollider2D>().enabled =false;
                     }
                 }
             }
@@ -110,7 +110,7 @@ public class ButtonExtension : MonoBehaviour, IPointerClickHandler, IPointerDown
                 GameObject.Find("Progress").SendMessage("ChangeImage");
                 if (green)
                 {
-                    green.SetActive(true);
+                    green.GetComponent<BoxCollider2D>().enabled = true;
                 }
             }
         }

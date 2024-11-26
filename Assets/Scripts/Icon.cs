@@ -25,13 +25,20 @@ public class Icon : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        btn.enabled = true;
+        if (btn)
+        {
+            btn.enabled = true;
+        }
         pic.SetActive(true);
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        btn.enabled = false;
+        if (btn)
+        {
+            btn.enabled = false;
+        }
+        
         pic.SetActive(false);     
     }
 }
