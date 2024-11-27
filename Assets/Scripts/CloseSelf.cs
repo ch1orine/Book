@@ -7,7 +7,7 @@ public class CloseSelf : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("CloseThisSelf", 3.0f);
+        Invoke("CloseThisSelf", 5.0f);
     }
 
     // Update is called once per frame
